@@ -50,28 +50,28 @@
             float: left;
             margin-left: 5px;
         }
-        @keyframes in {
-            from{
-                left:520px;
-            }
-            to{
-                left:0;
-            }
+        /*@keyframes in {*/
+            /*from{*/
+                /*left:520px;*/
+            /*}*/
+            /*to{*/
+                /*left:0;*/
+            /*}*/
 
-            }
-        /*定义一个class样式动画得执行*/
-        #di .movein{
-            animation: in 2s;
-            left: 0;
-        }
+            /*}*/
+        /*!*定义一个class样式动画得执行*!*/
+        /*#di .movein{*/
+            /*animation: in 2s;*/
+            /*left: 0;*/
+        /*}*/
     </style>
 </head>
 <body>
 <div id="di">
-    <div class="movein"></div>
-    <div class="movein"></div>
-    <div class="movein"></div>
-    <div class="movein"></div>
+    <div ></div>
+    <div ></div>
+    <div ></div>
+    <div ></div>
 
     <ul>
         <li>1</li>
@@ -83,12 +83,12 @@
     <script src="jquery-3.4.1.min.js"></script>
     <script>
         $(function () {
-            $("#di ul li").click(function () {
+            $("ul li").click(function () {
                 // 点击那个li 用来获取下标 index（）
                 // console.log($(this).index())
                 var ind=$(this).index()
                 // eq()方法用来取值
-                $("#di .movein").eq(ind).addClass("movein")
+                $("#di div").eq(ind).addClass("movein")
 
             })
         })

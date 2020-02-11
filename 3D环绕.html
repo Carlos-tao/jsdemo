@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: blue;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #di{
+            width: 100px;
+            height: 100px;
+            border: solid 1px #ffffff;
+            perspective: 800px;
+            position: absolute;
+        }
+        #di .imgs{
+            width: 100px;
+            height: 100px;
+            border: solid 1px #ffffff;
+            transform-style: preserve-3d;
+            position: absolute;
+        }
+        #di .imgs img{
+            position: absolute;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="di">
+        <div class="imgs">
+            <img src="img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg" width="100px" height="100px"  >
+            <img src="img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg" width="100px" height="100px"  >
+            <img src="img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg" width="100px" height="100px"  >
+            <img src="img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg" width="100px" height="100px"  >
+            <img src="img/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg" width="100px" height="100px"  >
+
+        </div>
+    </div>
+<script src="jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+
+        var wrapx=0;
+        var wrapy=0;
+        $(window).mousedown(function (e) {
+            var befor_left=e.pageX||e.clientX;
+            var befor_top=e.pageY||e.clientY;
+            var flag=true
+
+            $(window).mousemove(function (ev) {
+                if(flag){
+                    var after_left=ev.pageX||ev.clientX;
+                    var after_top=ev.pageY||ev.clientY;
+
+                    var aleft=after_left-befor_left;
+                    var atop=after_top-befor_top;
+
+                    $("#di .imgs").css({
+                        transform:"rotateX("+atop+"deg) rotateY("+aleft+"deg)"
+                    })
+                    wrapx+=atop;
+                    wrapy+=aleft
+
+                        }
+
+            }).mouseup(function () {
+                flag=false;
+
+            })
+
+        })
+
+            init();
+        $(window).resize(init)
+
+        var _left=($(window).width()-$("#di").width())/2
+        var _top=($(window).height()-$("#di").height())/2
+        $("#di").css({
+            top:_top+"px",
+            left:_left+"px"
+        })
+        $(".imgs img").each(function (index,element) {
+            var deg=360/$(".imgs img").length
+            $(element).css({
+                transform:"rotateY("+index*deg+"deg) translateZ(300px)",
+                transition:"1s "+index*0.1+"s"
+            })
+
+        });
+
+
+
+
+
+
+
+
+    })
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #yuan{
+            width: 500px;
+            height: 500px;
+            border: solid 1px black;
+            border-radius: 50%;
+            position: relative;
+            left: 50px;
+            top: 50px;
+        }
+        .qiu{
+            width: 10px;
+            height: 10px;
+            border: solid 1px rebeccapurple;
+            border-radius: 50px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="yuan">
+        <div class="qiu">
+
+        </div>
+    </div>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            var x=245;
+            var y=245;
+            var r=250;
+            var deg=0;
+
+            setInterval(function () {
+                var _left=Math.sin(deg/180*Math.PI)*r+x;
+                var _top=Math.cos(deg/180*Math.PI)*r+y;
+                $(".qiu").css({
+                    "left":_left+"px",
+                    "top":_top+"px"
+                })
+                deg++
+                if (deg==360){
+                    deg=0;
+                }
+            },10)
+
+        })
+    </script>
+
+
+
+</body>
+</html>
